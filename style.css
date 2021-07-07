@@ -66,14 +66,14 @@ li {
   color: white;
   transition: 0.1s;
 }
-.header .burgerbtn {
+.header #burgerbtn {
   display: none;
   width: 35px;
   height: 25px;
   cursor: pointer;
 }
 @media screen and (max-width: 375px) {
-  .header .burgerbtn {
+  .header #burgerbtn {
     display: block;
   }
 }
