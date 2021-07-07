@@ -1,0 +1,543 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700&family=Fraunces:wght@700;900&display=swap');
+
+// fonts
+$primary: 'Barlow', sans-serif;
+$secondary: 'Fraunces', serif;
+
+// Primary Colors
+$softred: hsl(7, 99%, 70%);
+$yellow: hsl(51, 100%, 49%);
+$darkcyan: hsl(167, 40%, 24%);
+$darkblue: hsl(198, 62%, 26%);
+$moderateCyan: hsla(168, 34%, 41%, 0.4);
+
+// Neutral Colors
+$saturatedblue: hsl(212, 27%, 19%);
+$verydarkgrayishblue: hsl(213, 9%, 39%);
+$darkgrayishblue: hsl(232, 10%, 55%);
+$grayishblue: hsl(210, 4%, 67%);
+$white: hsl(0, 0%, 100%);
+
+// Screen sizes
+$desktop: 1440px;
+$mobile: 375px;
+
+body {
+    font-family: $primary;
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+}
+
+li {
+    cursor: pointer;
+}
+
+.header {
+    position: fixed;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 30px 30px;
+    font-size: 1rem;
+    color: $white;
+    z-index: 98;
+    .logo {
+        font-weight: 700;
+        font-size: 1.7em;
+    }
+    .headerMenus {
+        display: flex;
+        @media screen and (max-width: $mobile) {
+            display: none;
+        }
+    }
+    .menuContainer {
+        display: flex;
+        align-items: center;
+        width: 300px;
+        ul {
+            width: 100%;
+            list-style: none;
+            display: flex;
+            margin: 0;
+            justify-content: space-between;
+        }
+        margin-right: 30px;
+    }
+    .contactButton {
+        background-color: $white;
+        color: $saturatedblue;
+        width: 100px;
+        height: 40px;
+        font-family: $secondary;
+        font-weight: 700;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.1s;
+    }
+
+    .contactButton:hover {
+        cursor: pointer;
+        background-color: skyblue;
+        color: white;
+        transition: 0.1s;
+    }
+
+    .burgerbtn {
+        display: none;
+        width: 35px;
+        height: 25px;
+        cursor: pointer;
+        @media screen and (max-width: $mobile) {
+            display: block;
+        }
+    }
+
+    #popup {
+        display: none;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: transparent;
+        z-index: 99;
+        
+        .triangle {
+            top: 90px;
+            position: fixed;
+            width: 0;
+            height: 0;
+            right: 0;
+            margin-right: 30px;
+            border-top: 40px solid transparent;
+            border-right: 35px solid white;
+            border-bottom: 40px solid transparent;
+        }    
+    
+        .mobileHeadContent {
+            width: 84%;
+            height: 40vh;
+            background-color: $white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 110px;
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            color: black;
+            .mobileHeadBox {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                height: 70%;
+                width: 40%;
+                .list {
+                    font-size: 1.15rem;
+                }
+                .contactBtn {
+                    width: 100%;
+                    height: 50px;
+                    border-radius: 30px;
+                    background-color: $yellow;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-family: $secondary;
+                    text-transform: uppercase;
+                    font-size: 0.9rem;
+                }
+            }
+        }
+    }
+
+    #popup.active {
+        display: block;
+    }
+}
+
+.container {
+    font-size: 1rem;
+    .headContainer {
+        position: relative;
+        height: 100vh;
+        .desktop {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            // display: none;
+            @media screen and (max-width: $mobile) {
+                display: none;
+            }
+        }
+        .mobile {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            @media screen and (max-width: $mobile) {
+                display: block;
+            }
+        }
+        .headContent {
+            position: absolute;
+            top: 25vh;
+            left: 0;
+            right: 0;
+            display: flex;
+            height: 280px;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            .title {
+                font-family: $secondary;
+                font-size: 3em;
+                font-weight: 700;
+                color: $white;
+                letter-spacing: 8px;
+                @media screen and (max-width: $mobile) {
+                    font-size: 2.5em;
+                    text-align: center;
+                }
+            }
+            img {
+                width: 40px;
+            }
+        }
+    }
+    .contentContainer {
+        display: flex;
+        width: 100%;
+        position: relative;
+        @media screen and (max-width: $mobile) {
+            flex-direction: column !important;
+        }
+        
+        .content, .imgContainer, .imgText {
+            width: 50%;
+            @media screen and (max-width: $mobile) {
+                width: 100%;
+            }
+        }
+
+        .imgContainer, .imgText {
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+            .desktop {
+                @media screen and (max-width: $mobile) {
+                    display: none;
+                }
+            }
+            .mobile {
+                display: none;
+                @media screen and (max-width: $mobile) {
+                    display: block;
+                }
+            }
+        }
+
+        .imgText {
+            position: relative;
+            .content {
+                position: absolute;
+                top: 65%;
+                @media screen and (max-width: $mobile) {
+                    top: 40%;
+                    width: 90%;
+                }
+                left: 0;
+                right: 0;
+                display: flex;
+                flex-direction: column;
+                margin: auto auto;
+                // align-items: center;
+                // justify-content: center;
+                // width: 70%;
+                .title {
+                    font-family: $secondary;
+                    color: $darkcyan;
+                    font-size: 1.8rem;
+                    @media screen and (max-width: $mobile) {
+                        font-size: 1.65rem;
+                    }
+                }
+                
+                p {
+                    color: $darkcyan;
+                    text-align: center;
+                    line-height: 25px;
+                    @media screen and (max-width: $mobile) {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @media screen and (max-width: $mobile) {
+                height: 50vh;
+            }
+            .contentbox {
+                width: 85%;
+                height: 70%;
+                display: flex;
+                flex-direction: column;
+                .title {
+                    color: $saturatedblue;
+                    font-family: $secondary;
+                    font-weight: 900;
+                    font-size: 2rem;
+                    @media screen and (max-width: $mobile) {
+                        text-align: center;
+                        font-size: 1.8rem;
+                    }
+                }
+                p {
+                    line-height: 25px;
+                    color: $grayishblue;
+                    margin-bottom: auto;
+                    @media screen and (max-width: $mobile) {
+                        text-align: center;
+                        font-size: 0.9rem;
+                    }
+                }
+                .learnmoreContainer {
+                    font-family: $secondary;
+                    color: $saturatedblue;
+                    font-size: 1.1rem;
+                    font-weight: 700;
+                    position: relative;
+                    height: 25px;
+                    width: 140px;
+                    text-transform: uppercase;
+                    display: flex;
+                    justify-content: center;
+                    .slash {
+                        width: 100%;
+                        height: 10px;
+                        border-radius: 20px;
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        z-index: -1;
+                    }
+                    .yellow {
+                        background-color: $yellow;
+                    }
+                    .red {
+                        background-color: $softred;
+                    }
+                    @media screen and (max-width: $mobile) {
+                        margin: 0px auto;
+                        font-size: 1rem;
+                    }
+                }
+            }
+        }
+    }
+    .contentContainer:nth-child(2) {
+        flex-direction: row-reverse;
+    }
+    // .contentContainer:nth-child(4) {
+
+    // }
+
+    .clientContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+        @media screen and (max-width: $mobile) {
+            height: 150vh;
+        }
+        .clientBox {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            height: 60%;
+            width: 80%;
+            @media screen and (max-width: $mobile) {
+                height: 90%;
+            }
+            .title {
+                font-family: $secondary;
+                font-size: 1.5rem;
+                color: $grayishblue;
+                letter-spacing: 5px;
+                @media screen and (max-width: $mobile) {
+                    font-size: 1.3rem;
+                }
+            }
+            .clients {
+                display: flex;
+                justify-content: space-between;
+                height: 70%;
+                @media screen and (max-width: $mobile) {
+                    flex-direction: column;
+                    height: 90%;
+                    // height: 100%;
+                }
+                .client {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 25%;
+                    height: 100%;
+
+                    @media screen and (max-width: $mobile) {
+                        width: 100%;
+                        height: 27%;
+                    }
+
+                    img {
+                        width: 80px;
+                        border-radius: 40px;
+                    }
+
+                    p {
+                        color: $verydarkgrayishblue;
+                        text-align: center;
+                        line-height: 25px;
+                    }
+
+                    .infocontainer {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        align-items: center;
+                        height: 13%;
+                        .name {
+                            color: $saturatedblue;
+                            font-family: $secondary;
+                        }
+    
+                        .job {
+                            color: $grayishblue;
+                            font-size: 0.8rem;
+                        }
+                    }
+                    
+
+                }
+            }
+        }
+    }
+
+    .portoContainer {
+        width: 100%;
+        .mobileimgs {
+            display: none;
+            @media screen and (max-width: $mobile) {
+                display: grid;
+                grid-template-columns: 50% 50%;
+                img {
+                    width: 100%;
+                    object-fit: contain;
+                }
+            }
+        }
+        .desktopimgs {
+            display: flex;
+            
+            @media screen and (max-width: $mobile) {
+                display: none;
+            }
+
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 350px;
+    background-color: $moderateCyan;
+    @media screen and (max-width: $mobile) {
+        height: 300px;
+    }
+    .footerbox {
+        height: 70%;
+        width: 13%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        @media screen and (max-width: $mobile) {
+            height: 60%;
+            width: 80%;
+        }
+        // justify-content: space-between;
+        .footerTitle {
+            font-weight: 700;
+            font-size: 1.7rem;
+            color: $darkcyan;
+            margin-bottom: 40px;
+            @media screen and (max-width: $mobile) {
+                font-size: 2rem;
+            }
+        }
+        .footerMenuContainer {
+            width: 100%;
+            margin-bottom: auto;
+            ul {
+                list-style: none;
+                display: flex;
+                padding: 0;
+                margin: 0;
+                justify-content: space-between;
+                font-size: 0.9rem;
+                @media screen and (max-width: $mobile) {
+                    font-size: 1.1rem;
+                }
+                li {
+                    transition: 0.1s;
+                }
+                li:hover {
+                    color: white;
+                    transition: 0.1s;
+                }
+            }
+        }
+        .socialmediaContainer {
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+            @media screen and (max-width: $mobile) {
+                width: 55%;
+            }
+            img {
+                width: 20px;
+                object-fit: contain;
+                cursor: pointer;
+                transition: 0.25s;
+            }
+            img:hover {
+                filter: invert(1);
+                transition: 0.15s;
+            }
+        }
+    }
+}
